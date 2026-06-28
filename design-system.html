@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AXONS Farming App · Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#00964C; --green-dark:#007A3E;
+  --blue:#074E9F; --blue-dark:#063F80;
+  --charcoal:#3B3B3C; --paper:#F5F7F6; --border:#E0E4E2;
+  --amber:#E8A33D; --danger:#D64545; --ink-soft:#5B5B5C;
+  --radius-sm:8px; --radius-md:12px; --radius-lg:18px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'IBM Plex Sans Thai','IBM Plex Sans',sans-serif;color:var(--charcoal);background:#eef2f0;line-height:1.5;}
+
+/* layout */
+.ds-nav{position:fixed;top:0;left:0;right:0;height:58px;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:linear-gradient(135deg,rgba(255,255,255,0.9),rgba(255,255,255,0.72));backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.ds-nav .brand{display:flex;align-items:center;gap:12px;font-weight:700;font-size:16px;}
+.ds-nav .brand .logo{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--green),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;font-family:'IBM Plex Sans',sans-serif;}
+.ds-nav .tag{font-size:12px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+.wrap{max-width:1080px;margin:0 auto;padding:96px 28px 80px;}
+
+/* hero */
+.hero{margin-bottom:48px;}
+.hero .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:12px;}
+.hero h1{font-size:42px;font-weight:700;letter-spacing:-0.01em;margin-bottom:14px;}
+.hero p{font-size:16px;color:var(--ink-soft);max-width:640px;}
+
+/* section */
+.section{margin-bottom:56px;}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+.section-head .num{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--green);font-weight:600;}
+.section-head h2{font-size:25px;font-weight:700;}
+.section-sub{font-size:14px;color:var(--ink-soft);margin-bottom:24px;margin-left:34px;}
+
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:26px;margin-bottom:18px;}
+.card-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:18px;}
+
+/* color swatches */
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;}
+.swatch{border:1px solid var(--border);border-radius:var(--radius-md);overflow:hidden;}
+.swatch .chip{height:84px;}
+.swatch .meta{padding:12px 14px;}
+.swatch .meta .name{font-size:13.5px;font-weight:600;}
+.swatch .meta .hex{font-size:12px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;}
+.swatch .meta .use{font-size:11.5px;color:var(--ink-soft);margin-top:3px;}
+
+/* type scale */
+.type-row{display:flex;align-items:baseline;gap:20px;padding:14px 0;border-bottom:1px solid var(--border);}
+.type-row:last-child{border-bottom:none;}
+.type-row .spec{width:160px;flex:none;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);}
+.type-sample{color:var(--charcoal);}
+
+/* component demo grid */
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.demo-cell{display:flex;flex-direction:column;gap:14px;}
+.demo-cell .dc-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-soft);}
+
+/* === REAL COMPONENTS (from mockup) === */
+/* buttons */
+.btn{font-family:'IBM Plex Sans Thai',sans-serif;font-size:15px;font-weight:600;padding:14px 22px;border-radius:14px;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:all .15s;}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 4px 14px rgba(0,150,76,0.25);}
+.btn-primary:hover{background:var(--green-dark);}
+.btn-outline{background:#fff;color:var(--green);border:1.5px solid var(--green);}
+.btn-outline:hover{background:rgba(0,150,76,0.06);}
+.btn-ghost{background:transparent;color:var(--ink-soft);}
+.btn-ghost:hover{color:var(--charcoal);}
+.btn-block{width:100%;}
+
+/* status chips */
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;}
+.chip-watch{background:rgba(232,163,61,0.14);color:#b9791f;}
+.chip-normal{background:rgba(0,150,76,0.12);color:var(--green);}
+.chip-danger{background:rgba(214,69,69,0.12);color:var(--danger);}
+
+/* AI advice card */
+.ai-card{background:linear-gradient(135deg,rgba(0,150,76,0.07),rgba(0,150,76,0.02));border:1px solid rgba(0,150,76,0.18);border-left:4px solid var(--green);border-radius:14px;padding:16px 18px;}
+.ai-card .ai-tag{font-size:12px;font-weight:600;color:var(--green);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+.ai-card .ai-body{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:8px;}
+.ai-card .ai-link{font-size:13px;color:var(--green);font-weight:600;}
+
+/* plot card */
+.plot-card{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:#fff;max-width:300px;}
+.plot-card .pc-img{height:130px;background:linear-gradient(120deg,#5a7d3a,#c9b835);position:relative;}
+.plot-card .pc-img .pc-chip{position:absolute;top:12px;right:12px;background:#fff;}
+.plot-card .pc-img .pc-area{position:absolute;bottom:10px;left:12px;color:#fff;font-size:13px;font-weight:600;}
+.plot-card .pc-body{padding:14px 16px;}
+.plot-card .pc-title{font-size:16px;font-weight:700;margin-bottom:8px;}
+.plot-card .pc-advice{font-size:13.5px;color:var(--ink-soft);margin-top:8px;}
+
+/* input */
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:13px;font-weight:600;}
+.field .input{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:12px;padding:13px 15px;background:#fff;}
+.field .input input{border:none;outline:none;font-family:inherit;font-size:15px;flex:1;color:var(--charcoal);background:transparent;}
+.field .input .ic{color:var(--ink-soft);}
+
+/* stepper */
+.stepper{display:flex;align-items:center;gap:0;}
+.step{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;position:relative;}
+.step .dot{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;z-index:2;}
+.step.done .dot{background:var(--green);color:#fff;}
+.step.active .dot{background:var(--green);color:#fff;box-shadow:0 0 0 4px rgba(0,150,76,0.18);}
+.step.todo .dot{background:#fff;border:2px solid var(--border);color:var(--border);}
+.step .lbl{font-size:11px;color:var(--ink-soft);}
+.step.active .lbl{color:var(--green);font-weight:600;}
+.step:not(:last-child)::after{content:"";position:absolute;top:17px;left:50%;width:100%;height:2px;background:var(--border);z-index:1;}
+.step.done:not(:last-child)::after{background:var(--green);}
+
+/* progress */
+.prog{height:8px;border-radius:999px;background:var(--border);overflow:hidden;}
+.prog-bar{height:100%;border-radius:999px;background:var(--green);}
+
+/* bottom nav */
+.bnav{display:flex;justify-content:space-around;background:#fff;border:1px solid var(--border);border-radius:16px;padding:10px 0;max-width:340px;}
+.bnav-item{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--ink-soft);}
+.bnav-item.active{color:var(--green);font-weight:600;}
+.bnav-item .bn-ic{width:22px;height:22px;}
+
+/* radius + spacing tokens */
+.token-row{display:flex;align-items:center;gap:16px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13.5px;}
+.token-row:last-child{border-bottom:none;}
+.token-row .tk-name{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);width:120px;flex:none;}
+.token-row .tk-demo{flex:none;}
+.r-box{width:60px;height:40px;background:rgba(0,150,76,0.12);border:1.5px solid var(--green);}
+.sp-box{height:18px;background:var(--green);border-radius:3px;}
+
+.foot{text-align:center;font-size:13px;color:var(--ink-soft);padding-top:30px;border-top:1px solid var(--border);}
+
+@media(max-width:760px){.demo{grid-template-columns:1fr;}.type-row{flex-direction:column;gap:6px;}.type-row .spec{width:auto;}}
+</style>
+</head>
+<body>
+
+<nav class="ds-nav">
+  <div class="brand"><span class="logo">A</span>AXONS Farming App <span class="tag">Design System v1.0</span></div>
+</nav>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="eyebrow">Design System</div>
+    <h1>AXONS Farming App</h1>
+    <p>คลังกลางของ design token และ component ที่ใช้ตลอดทั้งแอป ดึงจากงานออกแบบจริงบน Figma Make เพื่อให้ทุกหน้าจอใช้มาตรฐานเดียวกัน ออกแบบเพื่อเกษตรกรผู้ปลูกข้าวโพด เน้นปุ่มใหญ่ อ่านง่าย เข้าถึงได้สำหรับผู้ใช้สูงวัย</p>
+  </div>
+
+  <!-- 1. COLOR -->
+  <div class="section">
+    <div class="section-head"><span class="num">01</span><h2>Color · สี</h2></div>
+    <p class="section-sub">สีแบรนด์ (เขียว-น้ำเงิน) สำหรับ action และ identity · สีฟังก์ชัน (amber/แดง) สำหรับสถานะเตือนเท่านั้น</p>
+    <div class="card">
+      <div class="card-label">Brand</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="chip" style="background:#00964C"></div><div class="meta"><div class="name">Green</div><div class="hex">#00964C</div><div class="use">ปุ่มหลัก · action · brand</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#007A3E"></div><div class="meta"><div class="name">Green Dark</div><div class="hex">#007A3E</div><div class="use">hover · gradient</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#074E9F"></div><div class="meta"><div class="name">Blue</div><div class="hex">#074E9F</div><div class="use">accent · ลิงก์ · brand</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#063F80"></div><div class="meta"><div class="name">Blue Dark</div><div class="hex">#063F80</div><div class="use">hover · gradient</div></div></div>
+      </div>
+      <div class="card-label" style="margin-top:24px;">Functional · สถานะ</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="chip" style="background:#E8A33D"></div><div class="meta"><div class="name">Amber</div><div class="hex">#E8A33D</div><div class="use">เฝ้าระวัง · เตือน</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#D64545"></div><div class="meta"><div class="name">Danger</div><div class="hex">#D64545</div><div class="use">เร่งด่วน · ความเสี่ยง</div></div></div>
+      </div>
+      <div class="card-label" style="margin-top:24px;">Neutral · พื้นหลัง & ตัวอักษร</div>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="chip" style="background:#3B3B3C"></div><div class="meta"><div class="name">Charcoal</div><div class="hex">#3B3B3C</div><div class="use">ตัวอักษรหลัก</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#5B5B5C"></div><div class="meta"><div class="name">Ink Soft</div><div class="hex">#5B5B5C</div><div class="use">ตัวอักษรรอง</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#F5F7F6"></div><div class="meta"><div class="name">Paper</div><div class="hex">#F5F7F6</div><div class="use">พื้นหลัง</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#E0E4E2"></div><div class="meta"><div class="name">Border</div><div class="hex">#E0E4E2</div><div class="use">เส้นขอบ · เส้นคั่น</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-head"><span class="num">02</span><h2>Typography · ตัวอักษร</h2></div>
+    <p class="section-sub">IBM Plex Sans Thai เป็นฟอนต์หลัก · IBM Plex Mono สำหรับ label/ตัวเลขเชิงเทคนิค</p>
+    <div class="card">
+      <div class="type-row"><div class="spec">Display · 42/700</div><div class="type-sample" style="font-size:42px;font-weight:700;">ผู้ช่วยเกษตรอัจฉริยะ</div></div>
+      <div class="type-row"><div class="spec">H1 · 25/700</div><div class="type-sample" style="font-size:25px;font-weight:700;">วันนี้เหมาะหว่าน ฝนมาแน่ใน 2 วัน</div></div>
+      <div class="type-row"><div class="spec">H2 · 18/600</div><div class="type-sample" style="font-size:18px;font-weight:600;">แปลงที่ 1 · ข้าวโพด</div></div>
+      <div class="type-row"><div class="spec">Body · 15/400</div><div class="type-sample" style="font-size:15px;">ควรให้น้ำวันนี้ อากาศร้อนจัด 38°C ความชื้นดินต่ำกว่าเกณฑ์</div></div>
+      <div class="type-row"><div class="spec">Caption · 13/400</div><div class="type-sample" style="font-size:13px;color:var(--ink-soft);">ปลูกเมื่อ 14 มิ.ย. 2569 · 3 ไร่</div></div>
+      <div class="type-row"><div class="spec">Mono Label · 12/500</div><div class="type-sample" style="font-size:12px;font-family:'IBM Plex Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);">WEATHER-FIRST</div></div>
+    </div>
+  </div>
+
+  <!-- 3. TOKENS -->
+  <div class="section">
+    <div class="section-head"><span class="num">03</span><h2>Radius & Spacing · มุมโค้งและระยะห่าง</h2></div>
+    <p class="section-sub">ค่ามาตรฐานที่ใช้ซ้ำทั้งแอป ช่วยให้ทุกหน้าจอดูเป็นชุดเดียวกัน</p>
+    <div class="demo">
+      <div class="card">
+        <div class="card-label">Border Radius</div>
+        <div class="token-row"><span class="tk-name">--radius-sm · 8px</span><span class="tk-demo"><span class="r-box" style="border-radius:8px;"></span></span></div>
+        <div class="token-row"><span class="tk-name">--radius-md · 12px</span><span class="tk-demo"><span class="r-box" style="border-radius:12px;"></span></span></div>
+        <div class="token-row"><span class="tk-name">--radius-lg · 18px</span><span class="tk-demo"><span class="r-box" style="border-radius:18px;"></span></span></div>
+      </div>
+      <div class="card">
+        <div class="card-label">Spacing Scale</div>
+        <div class="token-row"><span class="tk-name">xs · 6px</span><span class="tk-demo sp-box" style="width:6px;"></span></div>
+        <div class="token-row"><span class="tk-name">sm · 12px</span><span class="tk-demo sp-box" style="width:12px;"></span></div>
+        <div class="token-row"><span class="tk-name">md · 18px</span><span class="tk-demo sp-box" style="width:18px;"></span></div>
+        <div class="token-row"><span class="tk-name">lg · 26px</span><span class="tk-demo sp-box" style="width:26px;"></span></div>
+        <div class="token-row"><span class="tk-name">xl · 40px</span><span class="tk-demo sp-box" style="width:40px;"></span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. BUTTONS -->
+  <div class="section">
+    <div class="section-head"><span class="num">04</span><h2>Buttons · ปุ่ม</h2></div>
+    <p class="section-sub">ปุ่มขนาดใหญ่ แตะง่าย ออกแบบเพื่อผู้ใช้สูงวัย · primary คือ action หลักหนึ่งเดียวต่อหน้าจอ</p>
+    <div class="card">
+      <div class="demo">
+        <div class="demo-cell">
+          <span class="dc-label">Primary</span>
+          <button class="btn btn-primary">เข้าสู่ระบบ →</button>
+          <span class="dc-label">Outline</span>
+          <button class="btn btn-outline">เลือกตำบลเอง</button>
+        </div>
+        <div class="demo-cell">
+          <span class="dc-label">Ghost</span>
+          <button class="btn btn-ghost">ข้ามไปก่อน</button>
+          <span class="dc-label">Block (เต็มความกว้าง)</span>
+          <button class="btn btn-primary btn-block">⊙ ใช้ตำแหน่งปัจจุบัน (GPS)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. STATUS CHIPS -->
+  <div class="section">
+    <div class="section-head"><span class="num">05</span><h2>Status Chips · ป้ายสถานะ</h2></div>
+    <p class="section-sub">บอกสถานะแปลงด้วยสี เขียว=ปกติ · เหลือง=เฝ้าระวัง · แดง=เร่งด่วน ให้เกษตรกรอ่านออกในแวบเดียว</p>
+    <div class="card">
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;">
+        <span class="chip chip-normal">ปกติ</span>
+        <span class="chip chip-watch">เฝ้าระวัง</span>
+        <span class="chip chip-danger">เร่งด่วน</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. INPUT -->
+  <div class="section">
+    <div class="section-head"><span class="num">06</span><h2>Input Field · ช่องกรอก</h2></div>
+    <p class="section-sub">ช่องกรอกขนาดใหญ่ มีไอคอนนำสายตา</p>
+    <div class="card" style="max-width:420px;">
+      <div class="field">
+        <label>เบอร์โทรศัพท์</label>
+        <div class="input"><span class="ic">📞</span><input placeholder="0xx-xxx-xxxx"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. AI CARD -->
+  <div class="section">
+    <div class="section-head"><span class="num">07</span><h2>AI Advice Card · การ์ดคำแนะนำ</h2></div>
+    <p class="section-sub">หัวใจของแอป แปลงข้อมูลอากาศเป็นคำแนะนำที่ลงมือทำได้ · เส้นซ้ายเขียวบอกว่าเป็นคำแนะนำจาก AI</p>
+    <div class="card" style="max-width:520px;">
+      <div class="ai-card">
+        <div class="ai-tag">✨ คำแนะนำ AI วันนี้</div>
+        <div class="ai-body">วันนี้เหมาะหว่าน ฝนมาแน่ใน 2 วัน</div>
+        <div class="ai-link">ดูเหตุผล →</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. PLOT CARD -->
+  <div class="section">
+    <div class="section-head"><span class="num">08</span><h2>Plot Card · การ์ดแปลง</h2></div>
+    <p class="section-sub">แสดงแต่ละแปลงพร้อมสถานะและคำแนะนำเฉพาะแปลง</p>
+    <div class="card">
+      <div class="plot-card">
+        <div class="pc-img"><span class="chip chip-watch pc-chip">เฝ้าระวัง</span><span class="pc-area">5 ไร่</span></div>
+        <div class="pc-body">
+          <div class="pc-title">แปลงที่ 1 · ข้าวโพด</div>
+          <span class="chip chip-watch">ระยะออกดอก</span>
+          <div class="pc-advice">ควรให้น้ำวันนี้ อากาศร้อนจัด</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. STEPPER -->
+  <div class="section">
+    <div class="section-head"><span class="num">09</span><h2>Growth Stepper · ระยะการเติบโต</h2></div>
+    <p class="section-sub">บอกว่าข้าวโพดอยู่ระยะไหน ผูกกับคำแนะนำเฉพาะระยะ</p>
+    <div class="card">
+      <div class="stepper">
+        <div class="step done"><div class="dot">✓</div><div class="lbl">หว่าน</div></div>
+        <div class="step done"><div class="dot">✓</div><div class="lbl">ต้นกล้า</div></div>
+        <div class="step done"><div class="dot">✓</div><div class="lbl">เติบโต</div></div>
+        <div class="step active"><div class="dot">●</div><div class="lbl">ออกดอก</div></div>
+        <div class="step todo"><div class="dot">○</div><div class="lbl">สร้างเมล็ด</div></div>
+        <div class="step todo"><div class="dot">○</div><div class="lbl">เก็บเกี่ยว</div></div>
+      </div>
+      <div style="margin-top:22px;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px;"><span>ระยะออกดอก · วันที่ 58 จาก 90</span><span style="color:var(--green);font-weight:600;">64%</span></div>
+        <div class="prog"><div class="prog-bar" style="width:64%;"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. BOTTOM NAV -->
+  <div class="section">
+    <div class="section-head"><span class="num">10</span><h2>Bottom Navigation · เมนูล่าง</h2></div>
+    <p class="section-sub">4 เมนูหลักเท่านั้น ลดความซับซ้อนสำหรับผู้ใช้สูงวัย</p>
+    <div class="card">
+      <div class="bnav">
+        <div class="bnav-item active"><span class="bn-ic">🏠</span>หน้าหลัก</div>
+        <div class="bnav-item"><span class="bn-ic">📅</span>ปฏิทิน</div>
+        <div class="bnav-item"><span class="bn-ic">📚</span>ความรู้</div>
+        <div class="bnav-item"><span class="bn-ic">🛒</span>ตลาด</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">AXONS Farming App · Design System — ดึงจากงานออกแบบจริงบน Figma Make · เกมส์ ภูมิวิทยาวัฒน์</div>
+</div>
+
+</body>
+</html>

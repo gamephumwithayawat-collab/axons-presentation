@@ -553,27 +553,20 @@
       <!-- backlog -->
       <div class="card glass">
         <div class="ch"><span class="dot" style="background:var(--green)"></span><span class="lbl">Product Backlog · เรียงตาม priority</span></div>
+        <p style="font-size:12px;color:var(--ink-soft);margin-bottom:10px;">กดแต่ละรายการเพื่อดู User Story →</p>
         <div style="display:flex;flex-direction:column;gap:7px;">
-          <div class="bl-row"><span class="bl-no">1</span><span>AI Decision Assistant</span><span class="bl-tag must">Must</span></div>
-          <div class="bl-row"><span class="bl-no">2</span><span>ระบบจัดการแปลง (Plots)</span><span class="bl-tag must">Must</span></div>
-          <div class="bl-row"><span class="bl-no">3</span><span>Weather Dashboard</span><span class="bl-tag must">Must</span></div>
-          <div class="bl-row"><span class="bl-no">4</span><span>ระบบแจ้งเตือน</span><span class="bl-tag must">Must</span></div>
-          <div class="bl-row"><span class="bl-no">5</span><span>ปฏิทินเพาะปลูก</span><span class="bl-tag should">Should</span></div>
-          <div class="bl-row"><span class="bl-no">6</span><span>คลังความรู้ + ตลาด</span><span class="bl-tag could">Could</span></div>
+          <div class="bl-row active" onclick="showStory(0,this)"><span class="bl-no">1</span><span>AI Decision Assistant</span><span class="bl-tag must">Must</span></div>
+          <div class="bl-row" onclick="showStory(1,this)"><span class="bl-no">2</span><span>ระบบจัดการแปลง (Plots)</span><span class="bl-tag must">Must</span></div>
+          <div class="bl-row" onclick="showStory(2,this)"><span class="bl-no">3</span><span>Weather Dashboard</span><span class="bl-tag must">Must</span></div>
+          <div class="bl-row" onclick="showStory(3,this)"><span class="bl-no">4</span><span>ระบบแจ้งเตือน</span><span class="bl-tag must">Must</span></div>
+          <div class="bl-row" onclick="showStory(4,this)"><span class="bl-no">5</span><span>ปฏิทินเพาะปลูก</span><span class="bl-tag should">Should</span></div>
+          <div class="bl-row" onclick="showStory(5,this)"><span class="bl-no">6</span><span>คลังความรู้ + ตลาด</span><span class="bl-tag could">Could</span></div>
         </div>
       </div>
       <!-- user story -->
       <div class="card glass">
         <div class="ch"><span class="dot" style="background:var(--blue)"></span><span class="lbl">User Story + Acceptance Criteria</span></div>
-        <div class="story">
-          <span class="st-k">As a</span> เกษตรกรที่มีหลายแปลงปลูกต่างช่วงกัน<br>
-          <span class="st-k">I want</span> เห็นว่าแต่ละแปลงอยู่ระยะไหนและต้องทำอะไรวันนี้<br>
-          <span class="st-k">so that</span> จัดการได้ถูกแปลง ไม่สับสนว่าแปลงไหนต้องดูแลก่อน
-        </div>
-        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
-          <div class="ac"><b>Given</b> มีหลายแปลง <b>When</b> เปิดหน้าหลัก <b>Then</b> เห็นการ์ดแต่ละแปลง + สถานะสี เขียว/เหลือง/แดง</div>
-          <div class="ac"><b>Given</b> แปลงเสี่ยงเร่งด่วน <b>When</b> ดูรายการ <b>Then</b> แปลงนั้นแสดงสีแดง + คำแนะนำที่ต้องรีบทำขึ้นก่อน</div>
-        </div>
+        <div id="storyBox"></div>
       </div>
     </div>
   </div>
@@ -1115,8 +1108,8 @@
       <div class="principle-grid">
         <div class="principle">
           <div class="pr-icon">🔗</div>
-          <div class="pr-h">ทุกการตัดสินใจเชื่อมโยงกัน</div>
-          <p>ทุกฟีเจอร์ในงานนี้สามารถสืบย้อนกลับไปยังข้อมูลวิจัยได้ ตั้งแต่ research synthesis ไปสู่ cluster ของปัญหา แปลงเป็นฟีเจอร์ จัดลำดับด้วย MoSCoW และลงเป็น backlog ทุกอย่างเชื่อมกันเป็นเส้นเดียว</p>
+          <div class="pr-h">ทุกการตัดสินใจตามรอยกลับได้</div>
+          <p>ทุกฟีเจอร์ในงานนี้สามารถสืบย้อนกลับไปยังข้อมูลวิจัยได้ ตั้งแต่ research synthesis ไปสู่ cluster ของปัญหา แปลงเป็นฟีเจอร์ จัดลำดับด้วย MoSCoW และลงเป็น backlog ทุกอย่างเชื่อมกันเป็นเส้นเดียวโดยไม่มีการเดา</p>
         </div>
         <div class="principle">
           <div class="pr-icon">🎨</div>
@@ -1130,8 +1123,8 @@
         </div>
         <div class="principle">
           <div class="pr-icon">📊</div>
-          <div class="pr-h">ยึดข้อมูลเป็นหลัก</div>
-          <p>งานนำเสนอทั้งหมดนี้อยู่บนพื้นฐานของ Desk Research และ Secondary Research จากแหล่งข้อมูลที่น่าเชื่อถือ Persona ที่ใช้เป็น proto-persona ที่ตั้งบนสมมติฐาน และตัวชี้วัดทั้งหมดเป็นเป้าหมายที่ออกแบบไว้จะวัด ไม่ใช่ผลที่เกิดขึ้นจริง </p>
+          <div class="pr-h">ยึดข้อมูลและความซื่อตรงเป็นหลัก</div>
+          <p>งานนำเสนอทั้งหมดนี้อยู่บนพื้นฐานของ Desk Research และ Secondary Research จากแหล่งข้อมูลที่น่าเชื่อถือ Persona ที่ใช้เป็น proto-persona ที่ตั้งบนสมมติฐาน และตัวชี้วัดทั้งหมดเป็นเป้าหมายที่ออกแบบไว้จะวัด ไม่ใช่ผลที่เกิดขึ้นจริง เพื่อความโปร่งใสและไม่กล่าวอ้างเกินจริง</p>
         </div>
       </div>
     </div>
@@ -1325,7 +1318,10 @@
 .moscow.wont{background:rgba(91,91,92,0.06);border-color:rgba(91,91,92,0.2);} .moscow.wont .ms-h{color:var(--ink-soft);} .moscow.wont li::before{background:var(--ink-soft);} .moscow.wont .ms-badge{background:linear-gradient(135deg,#7a7a7b,#5b5b5c);}
 
 /* backlog */
-.bl-row{display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:10px;font-size:13px;padding:8px 10px;border-radius:9px;background:rgba(255,255,255,0.5);border:1px solid var(--border);}
+.bl-row{display:grid;grid-template-columns:24px 1fr auto;align-items:center;gap:10px;font-size:13px;padding:8px 10px;border-radius:9px;background:rgba(255,255,255,0.5);border:1px solid var(--border);cursor:pointer;transition:all .15s;}
+.bl-row:hover{background:rgba(0,150,76,0.06);border-color:rgba(0,150,76,0.3);}
+.bl-row.active{background:rgba(0,150,76,0.1);border-color:var(--green);box-shadow:0 2px 8px rgba(0,150,76,0.12);}
+.bl-row.active .bl-no{background:var(--green);color:#fff;}
 .bl-no{font-family:'IBM Plex Mono',monospace;color:var(--ink-soft);font-size:12px;}
 .bl-tag{font-size:10.5px;padding:3px 9px;border-radius:999px;font-weight:600;font-family:'IBM Plex Mono',monospace;}
 .bl-tag.must{background:rgba(0,150,76,0.13);color:var(--green);}
@@ -1366,50 +1362,42 @@
 .ufl-sym.process{background:rgba(0,150,76,0.1);border:1.5px solid rgba(0,150,76,0.4);border-radius:4px;}
 .ufl-sym.decision{background:rgba(232,163,61,0.15);border:1.5px solid var(--amber);transform:rotate(45deg) scale(0.8);}
 
-.vflow-svg{width:100%;max-width:820px;margin:0 auto;}
-.vflow-svg svg{width:100%;height:auto;display:block;}
+.vflow{display:flex;flex-direction:column;align-items:center;}
 /* nodes */
-.vf-node{text-align:center;line-height:1.35;font-weight:600;font-size:13px;color:var(--charcoal);padding:14px 22px;border-radius:10px;max-width:380px;box-shadow:0 2px 8px rgba(0,0,0,0.05);}
+.vf-node{text-align:center;line-height:1.35;font-weight:600;font-size:13px;color:var(--charcoal);padding:13px 20px;border-radius:10px;max-width:380px;}
 .vf-node span{font-size:11px;font-weight:400;color:var(--ink-soft);display:block;margin-top:2px;}
-.vf-start{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:999px;padding:14px 34px;box-shadow:0 4px 14px rgba(0,150,76,0.3);}
-.vf-end{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:999px;box-shadow:0 4px 14px rgba(0,150,76,0.3);}
-.vf-end.soft{background:rgba(0,150,76,0.12);color:var(--green-dark);border:1.5px solid rgba(0,150,76,0.35);box-shadow:none;}
+.vf-start{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:999px;padding:13px 32px;}
+.vf-end{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:999px;}
+.vf-end.soft{background:rgba(0,150,76,0.12);color:var(--green-dark);border:1.5px solid rgba(0,150,76,0.35);}
 .vf-end.soft span{color:var(--ink-soft);}
-.vf-home{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;box-shadow:0 4px 14px rgba(7,78,159,0.3);}
+.vf-home{background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;}
 .vf-home span{color:rgba(255,255,255,0.85);}
 .vf-input{background:rgba(7,78,159,0.07);border:1.5px solid var(--blue);position:relative;}
-.vf-process{background:rgba(0,150,76,0.08);border:1.5px solid rgba(0,150,76,0.4);}
+.vf-process{background:rgba(0,150,76,0.08);border:1.5px solid rgba(0,150,76,0.35);}
 .vf-process.warn{background:rgba(232,163,61,0.12);border-color:var(--amber);}
-.vf-process.sm{font-size:12px;padding:11px 12px;width:100%;}
+.vf-process.sm{font-size:12px;padding:10px 12px;width:100%;}
 /* decision diamond */
-.vf-decision{position:relative;background:rgba(232,163,61,0.14);border:1.5px solid var(--amber);color:#9a6a1f;font-weight:600;font-size:12.5px;text-align:center;padding:18px 30px;border-radius:8px;max-width:340px;box-shadow:0 2px 8px rgba(232,163,61,0.15);}
-.vf-decision::before{content:"◇";position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--amber);}
-
-/* ===== connectors — ชัดขึ้น มีลูกศร ===== */
-.vf-line{width:2.5px;height:30px;background:var(--blue);opacity:0.55;flex:none;position:relative;}
-/* ลูกศรชี้ลงปลายเส้นปกติ */
-.vf-line.arrow::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--blue);opacity:1;}
-.vf-line.tall{height:auto;flex:1;min-height:120px;width:2.5px;align-self:stretch;margin:0 auto;opacity:0.55;}
-.vf-merge{width:2.5px;height:30px;background:var(--blue);opacity:0.55;position:relative;}
-/* จุดวงกลม merge บอกว่าเส้นมารวมกัน */
-.vf-merge::before{content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--blue);opacity:0.9;}
-.vf-merge.arrow::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:7px solid var(--blue);}
-
+.vf-decision{position:relative;background:rgba(232,163,61,0.12);border:1.5px solid var(--amber);color:#9a6a1f;font-weight:600;font-size:12.5px;text-align:center;padding:18px 28px;border-radius:8px;max-width:340px;}
+.vf-decision::before{content:"◇";position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--amber);}
+/* connectors */
+.vf-line{width:2px;height:20px;background:var(--blue);opacity:0.4;flex:none;}
+.vf-line.tall{height:auto;flex:1;min-height:120px;align-self:stretch;width:2px;margin:0 auto;}
+.vf-merge{width:2px;height:20px;background:var(--blue);opacity:0.4;}
 /* split (decision branches) */
-.vf-split{display:flex;gap:90px;align-items:stretch;justify-content:center;position:relative;width:100%;}
-.vf-split::before{content:"";position:absolute;top:0;left:30%;right:30%;height:2.5px;background:var(--blue);opacity:0.55;}
+.vf-split{display:flex;gap:40px;align-items:stretch;justify-content:center;position:relative;width:100%;}
+.vf-split::before{content:"";position:absolute;top:0;left:25%;right:25%;height:2px;background:var(--blue);opacity:0.4;}
 .vf-col{display:flex;flex-direction:column;align-items:center;position:relative;}
-.vf-col::before{content:"";position:absolute;top:0;left:50%;width:2.5px;height:10px;background:var(--blue);opacity:0.55;}
-.vf-elabel{font-size:11px;font-weight:700;font-family:'IBM Plex Mono',monospace;padding:4px 12px;border-radius:6px;margin-top:10px;border:1px solid transparent;}
-.vf-elabel.yes{background:rgba(0,150,76,0.14);color:var(--green-dark);border-color:rgba(0,150,76,0.3);}
-.vf-elabel.no{background:rgba(214,69,69,0.1);color:var(--danger);border-color:rgba(214,69,69,0.25);}
+.vf-col::before{content:"";position:absolute;top:0;left:50%;width:2px;height:8px;background:var(--blue);opacity:0.4;}
+.vf-elabel{font-size:11px;font-weight:700;font-family:'IBM Plex Mono',monospace;padding:3px 10px;border-radius:6px;margin-top:8px;}
+.vf-elabel.yes{background:rgba(0,150,76,0.12);color:var(--green-dark);}
+.vf-elabel.no{background:rgba(214,69,69,0.1);color:var(--danger);}
 /* 4-way fork */
-.vf-fork4-label{font-size:12px;color:var(--ink-soft);font-style:italic;margin:18px 0 16px;text-align:center;}
-.vf-fork4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;width:100%;position:relative;padding-top:16px;}
-.vf-fork4::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2.5px;background:var(--blue);opacity:0.55;}
+.vf-fork4-label{font-size:12px;color:var(--ink-soft);font-style:italic;margin:14px 0 14px;text-align:center;}
+.vf-fork4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;position:relative;padding-top:14px;}
+.vf-fork4::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;background:var(--blue);opacity:0.4;}
 .vf-branch{display:flex;flex-direction:column;align-items:center;gap:0;position:relative;}
-.vf-branch::before{content:"";position:absolute;top:-16px;left:50%;width:2.5px;height:16px;background:var(--blue);opacity:0.55;}
-.vf-branch .vf-line{height:16px;}
+.vf-branch::before{content:"";position:absolute;top:-14px;left:50%;width:2px;height:14px;background:var(--blue);opacity:0.4;}
+.vf-branch .vf-line{height:14px;}
 
 /* swimlane */
 .swim{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
@@ -1600,6 +1588,25 @@ window.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft'){e.preventDefault();lbStep(-1);}
   if(e.key==='Escape'){closeLightbox();}
 });
+
+// PO Lens — user stories ต่อ backlog item
+const stories=[
+  {as:"เกษตรกรที่ต้องตัดสินใจดูแลไร่ทุกวัน",want:"ได้รับคำแนะนำว่าควรทำอะไรวันนี้ แทนที่จะเห็นแค่ตัวเลขอากาศ",so:"ลงมือทำได้ทันทีโดยไม่ต้องตีความข้อมูลเอง",ac:[["มีข้อมูลอากาศวันนี้","เปิดหน้าหลัก","เห็นการ์ดคำแนะนำ AI พร้อมสิ่งที่ควรทำ"],["กดดูเหตุผล","แตะการ์ดคำแนะนำ","เห็นว่าคำแนะนำมาจากปัจจัยอากาศใดบ้าง"]]},
+  {as:"เกษตรกรที่มีหลายแปลงปลูกต่างช่วงกัน",want:"เห็นว่าแต่ละแปลงอยู่ระยะไหนและต้องทำอะไรวันนี้",so:"จัดการได้ถูกแปลง ไม่สับสนว่าแปลงไหนต้องดูแลก่อน",ac:[["มีหลายแปลง","เปิดหน้าหลัก","เห็นการ์ดแต่ละแปลง + สถานะสี เขียว/เหลือง/แดง"],["แปลงเสี่ยงเร่งด่วน","ดูรายการ","แปลงนั้นแสดงสีแดง + คำแนะนำที่ต้องรีบทำขึ้นก่อน"]]},
+  {as:"เกษตรกรที่วางแผนงานตามสภาพอากาศ",want:"ดูพยากรณ์อากาศพื้นที่ไร่ของตัวเองแบบเข้าใจง่าย",so:"คาดการณ์และเตรียมรับมือล่วงหน้าได้",ac:[["ตั้งค่าตำแหน่งไร่แล้ว","เปิดหน้าอากาศ","เห็นพยากรณ์รายวัน/รายสัปดาห์ของพื้นที่นั้น"],["มีฝนหรืออากาศรุนแรง","ดูพยากรณ์","ช่วงเวลาเสี่ยงถูกเน้นให้เห็นชัด"]]},
+  {as:"เกษตรกรที่อาจพลาดช่วงเวลาสำคัญ",want:"ได้รับแจ้งเตือนเมื่อมีความเสี่ยงหรือมีสิ่งที่ต้องทำ",so:"ไม่พลาดจังหวะสำคัญแม้ไม่ได้เปิดแอปบ่อย",ac:[["ระบบพบความเสี่ยงอากาศ","ถึงเวลาที่ตั้งไว้","ส่ง Push แจ้งเตือนพร้อมสิ่งที่ควรทำ"],["เปิดการแจ้งเตือน","แตะ Push","เข้าสู่หน้าที่เกี่ยวข้องโดยตรง"]]},
+  {as:"เกษตรกรที่อยากติดตามพัฒนาการของพืช",want:"เห็นปฏิทินว่าข้าวโพดอยู่ระยะไหนและกิจกรรมถัดไปคืออะไร",so:"วางแผนงานล่วงหน้าตามระยะการเติบโตได้",ac:[["บันทึกวันหว่านแล้ว","เปิดปฏิทิน","เห็นระยะปัจจุบัน + วันสำคัญถัดไป"],["ถึงระยะใหม่","เปิดแอป","ปฏิทินอัปเดตระยะและกิจกรรมที่ต้องทำ"]]},
+  {as:"เกษตรกรที่อยากรู้วิธีดูแลและขายผลผลิต",want:"เข้าถึงความรู้การเพาะปลูกและข้อมูลตลาดในที่เดียว",so:"ดูแลพืชได้ถูกวิธีและขายได้ราคาดีขึ้น",ac:[["เปิดคลังความรู้","เลือกหัวข้อ","เห็นเนื้อหาย่อยเข้าใจง่ายเหมาะกับระยะพืช"],["เปิดหน้าตลาด","ดูราคา","เห็นราคารับซื้อและจุดรับซื้อใกล้เคียง"]]}
+];
+function showStory(i,el){
+  const s=stories[i];
+  const acHtml=s.ac.map(a=>`<div class="ac"><b>Given</b> ${a[0]} <b>When</b> ${a[1]} <b>Then</b> ${a[2]}</div>`).join("");
+  document.getElementById('storyBox').innerHTML=
+    `<div class="story"><span class="st-k">As a</span> ${s.as}<br><span class="st-k">I want</span> ${s.want}<br><span class="st-k">so that</span> ${s.so}</div>`+
+    `<div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">${acHtml}</div>`;
+  if(el){document.querySelectorAll('.bl-row').forEach(r=>r.classList.remove('active'));el.classList.add('active');}
+}
+showStory(0,null);
 
 function togglePersona(){
   const c=document.getElementById('personaCollapse');

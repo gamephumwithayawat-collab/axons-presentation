@@ -102,15 +102,42 @@
       <!-- timeline -->
       <div class="card glass">
         <div class="ch"><span class="dot" style="background:var(--blue)"></span><span class="lbl">Project Timeline · 25 มิ.ย – 1 ก.ค. 2569</span></div>
-        <div style="display:flex;flex-direction:column;gap:11px;margin-top:4px;">
-          <!-- timeline rows -->
-          <div class="tl-row" style="--w:100%;--c:var(--green)"><span class="tl-day">วันที่ 1</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Research + วาง Scope</span></div></div></div>
-          <div class="tl-row" style="--w:88%;--c:var(--green)"><span class="tl-day">วันที่ 2</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Empathize + Define</span></div></div></div>
-          <div class="tl-row" style="--w:76%;--c:#2a76b8"><span class="tl-day">วันที่ 3</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Business + PO Methods</span></div></div></div>
-          <div class="tl-row" style="--w:64%;--c:#2a76b8"><span class="tl-day">วันที่ 4</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Ideate + User Flow + IA</span></div></div></div>
-          <div class="tl-row" style="--w:52%;--c:var(--blue)"><span class="tl-day">วันที่ 5</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Prototype + Mockup</span></div></div></div>
-          <div class="tl-row" style="--w:40%;--c:var(--blue)"><span class="tl-day">วันที่ 6</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Test Plan + Metrics</span></div></div></div>
-          <div class="tl-row" style="--w:28%;--c:var(--amber)"><span class="tl-day">วันที่ 7</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">ประกอบสไลด์ + ซ้อมพูด</span></div></div></div>
+        <!-- phase legend -->
+        <div class="tl-legend">
+          <span class="tl-leg"><span class="tl-leg-dot" style="background:var(--green)"></span>เข้าใจปัญหา</span>
+          <span class="tl-leg"><span class="tl-leg-dot" style="background:var(--blue)"></span>ออกแบบ &amp; พัฒนา</span>
+          <span class="tl-leg"><span class="tl-leg-dot" style="background:var(--amber)"></span>ปิดงาน</span>
+        </div>
+        <!-- horizontal day timeline: ทุกวันเท่ากัน (1 วัน/งาน) -->
+        <div class="tl2">
+          <div class="tl2-step" style="--c:var(--green)">
+            <div class="tl2-node"></div><span class="tl2-day">วันที่ 1</span>
+            <span class="tl2-task">Research + วาง Scope</span>
+          </div>
+          <div class="tl2-step" style="--c:var(--green)">
+            <div class="tl2-node"></div><span class="tl2-day">วันที่ 2</span>
+            <span class="tl2-task">Empathize + Define</span>
+          </div>
+          <div class="tl2-step" style="--c:var(--blue)">
+            <div class="tl2-node"></div><span class="tl2-day">วันที่ 3</span>
+            <span class="tl2-task">Business + PO Methods</span>
+          </div>
+          <div class="tl2-step" style="--c:var(--blue)">
+            <div class="tl2-node"></div><span class="tl2-day">วันที่ 4</span>
+            <span class="tl2-task">Ideate + User Flow + IA</span>
+          </div>
+          <div class="tl2-step" style="--c:var(--blue)">
+            <div class="tl2-node"></div><span class="tl2-day">วันที่ 5</span>
+            <span class="tl2-task">Prototype + Mockup</span>
+          </div>
+          <div class="tl2-step" style="--c:var(--blue)">
+            <div class="tl2-node"></div><span class="tl2-day">วันที่ 6</span>
+            <span class="tl2-task">Test Plan + Metrics</span>
+          </div>
+          <div class="tl2-step" style="--c:var(--amber)">
+            <div class="tl2-node"></div><span class="tl2-day">วันที่ 7</span>
+            <span class="tl2-task">ประกอบสไลด์ + ซ้อมพูด</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1172,11 +1199,17 @@
 
 <style>
 /* timeline rows */
-.tl-row{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:12px;}
-.tl-day{font-size:12px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
-.tl-track{position:relative;height:30px;display:flex;align-items:center;}
-.tl-bar{height:30px;width:var(--w);min-width:160px;background:var(--c);border-radius:8px;opacity:0.92;display:flex;align-items:center;padding-left:14px;}
-.tl-task{font-size:13px;color:#fff;font-weight:500;white-space:nowrap;}
+.tl-legend{display:flex;gap:18px;margin:6px 0 16px;flex-wrap:wrap;}
+.tl-leg{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-soft);}
+.tl-leg-dot{width:9px;height:9px;border-radius:50%;}
+.tl2{display:grid;grid-template-columns:repeat(7,1fr);gap:0;position:relative;}
+.tl2-step{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px;}
+.tl2-step::before{content:"";position:absolute;top:7px;left:0;right:0;height:2px;background:var(--border);z-index:0;}
+.tl2-step:first-child::before{left:50%;}
+.tl2-step:last-child::before{right:50%;}
+.tl2-node{width:16px;height:16px;border-radius:50%;background:var(--c);border:3px solid #fff;box-shadow:0 0 0 2px var(--c);position:relative;z-index:1;margin-bottom:12px;}
+.tl2-day{font-size:11px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;margin-bottom:6px;}
+.tl2-task{font-size:12px;line-height:1.45;color:var(--charcoal);font-weight:500;}
 /* design thinking cards */
 .dt{display:flex;flex-direction:column;gap:6px;padding:18px 16px;}
 .dt-ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:6px;}

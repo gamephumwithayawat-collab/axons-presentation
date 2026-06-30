@@ -102,22 +102,15 @@
       <!-- timeline -->
       <div class="card glass">
         <div class="ch"><span class="dot" style="background:var(--blue)"></span><span class="lbl">Project Timeline · 25 มิ.ย – 1 ก.ค. 2569</span></div>
-        <div class="gantt">
-          <!-- header: day axis -->
-          <div class="gantt-head">
-            <span class="gantt-label"></span>
-            <div class="gantt-grid">
-              <span>D1</span><span>D2</span><span>D3</span><span>D4</span><span>D5</span><span>D6</span><span>D7</span>
-            </div>
-          </div>
-          <!-- rows: bar วางตามช่วงวันจริง (--s=วันเริ่ม, --d=จำนวนวัน) -->
-          <div class="gantt-row"><span class="gantt-label">Research + วาง Scope</span><div class="gantt-grid"><div class="gantt-bar" style="--s:1;--d:1;--c:var(--green)"></div></div></div>
-          <div class="gantt-row"><span class="gantt-label">Empathize + Define</span><div class="gantt-grid"><div class="gantt-bar" style="--s:2;--d:1;--c:var(--green)"></div></div></div>
-          <div class="gantt-row"><span class="gantt-label">Business + PO Methods</span><div class="gantt-grid"><div class="gantt-bar" style="--s:3;--d:1;--c:#2a76b8"></div></div></div>
-          <div class="gantt-row"><span class="gantt-label">Ideate + User Flow + IA</span><div class="gantt-grid"><div class="gantt-bar" style="--s:4;--d:1;--c:#2a76b8"></div></div></div>
-          <div class="gantt-row"><span class="gantt-label">Prototype + Mockup</span><div class="gantt-grid"><div class="gantt-bar" style="--s:5;--d:1;--c:var(--blue)"></div></div></div>
-          <div class="gantt-row"><span class="gantt-label">Test Plan + Metrics</span><div class="gantt-grid"><div class="gantt-bar" style="--s:6;--d:1;--c:var(--blue)"></div></div></div>
-          <div class="gantt-row"><span class="gantt-label">ประกอบสไลด์ + ซ้อมพูด</span><div class="gantt-grid"><div class="gantt-bar" style="--s:7;--d:1;--c:var(--amber)"></div></div></div>
+        <div style="display:flex;flex-direction:column;gap:11px;margin-top:4px;">
+          <!-- timeline rows -->
+          <div class="tl-row" style="--w:100%;--c:var(--green)"><span class="tl-day">วันที่ 1</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Research + วาง Scope</span></div></div></div>
+          <div class="tl-row" style="--w:88%;--c:var(--green)"><span class="tl-day">วันที่ 2</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Empathize + Define</span></div></div></div>
+          <div class="tl-row" style="--w:76%;--c:#2a76b8"><span class="tl-day">วันที่ 3</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Business + PO Methods</span></div></div></div>
+          <div class="tl-row" style="--w:64%;--c:#2a76b8"><span class="tl-day">วันที่ 4</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Ideate + User Flow + IA</span></div></div></div>
+          <div class="tl-row" style="--w:52%;--c:var(--blue)"><span class="tl-day">วันที่ 5</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Prototype + Mockup</span></div></div></div>
+          <div class="tl-row" style="--w:40%;--c:var(--blue)"><span class="tl-day">วันที่ 6</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">Test Plan + Metrics</span></div></div></div>
+          <div class="tl-row" style="--w:28%;--c:var(--amber)"><span class="tl-day">วันที่ 7</span><div class="tl-track"><div class="tl-bar"><span class="tl-task">ประกอบสไลด์ + ซ้อมพูด</span></div></div></div>
         </div>
       </div>
     </div>
@@ -427,6 +420,80 @@
   <div class="slide-num">07</div>
 </section>
 
+<!-- ===== SLIDE 9 — IDEATE (Feature + MoSCoW) ===== -->
+<section class="slide" id="s-ideate" data-nav="Ideate">
+  <div class="bg-mesh"><div class="blob g" style="width:440px;height:440px;bottom:-180px;left:-120px;"></div></div>
+  <div class="slide-inner">
+    <div class="m-head">
+      <div class="left">
+        <div class="titrow"><span class="accent-bar"></span><h2>Ideate <span class="en">·</span> หาทางออก &amp; จัดลำดับ</h2></div>
+        <p class="desc">แปลงปัญหาเป็นฟีเจอร์ แล้วจัดลำดับความสำคัญด้วย MoSCoW เพื่อโฟกัสสิ่งที่เป็นแกนหลักก่อน</p>
+      </div>
+      <span class="step-chip">Ideate · PO</span>
+    </div>
+    <div class="moscow-board">
+      <div class="moscow must">
+        <div class="ms-top"><div class="ms-badge">M</div><div class="ms-h">Must have<span>ต้องมี จำเป็นที่สุด</span></div></div>
+        <ul><li>AI Decision Assistant</li><li>ระบบจัดการแปลง (Plots)</li><li>Weather Dashboard</li><li>การ์ดแจ้งเตือน</li></ul>
+        <div class="ms-note">แกนหลักของคุณค่า ถ้าขาดไปแอปจะไม่ต่างจากแอปอากาศทั่วไป</div>
+      </div>
+      <div class="moscow should">
+        <div class="ms-top"><div class="ms-badge">S</div><div class="ms-h">Should have<span>ควรมี สำคัญรองลงมา</span></div></div>
+        <ul><li>ปฏิทินเพาะปลูกผูกระยะโต</li><li>บันทึกประวัติการดูแลรายแปลง</li></ul>
+        <div class="ms-note">เพิ่มคุณค่าได้มาก แต่ไม่ใช่เงื่อนไขที่ทำให้แอปใช้งานได้</div>
+      </div>
+      <div class="moscow could">
+        <div class="ms-top"><div class="ms-badge">C</div><div class="ms-h">Could have<span>มีก็ดี ถ้าเวลาเหลือ</span></div></div>
+        <ul><li>คลังความรู้ย่อย</li><li>ช่องเชื่อมตลาด</li></ul>
+        <div class="ms-note">ทำให้ประสบการณ์สมบูรณ์ขึ้น แต่ตัดออกได้หากทรัพยากรจำกัด</div>
+      </div>
+      <div class="moscow wont">
+        <div class="ms-top"><div class="ms-badge">W</div><div class="ms-h">Won't have<span>ยังไม่ทำในรอบนี้</span></div></div>
+        <ul><li>คำแนะนำรายแปลงเชิงลึก (ปุ๋ย/น้ำตามระยะ)</li><li>ระบบซื้อขายผลผลิตในแอป</li></ul>
+        <div class="ms-note">จงใจเลื่อนออกไปก่อน เพื่อให้โฟกัสกับแกนหลักได้เต็มที่</div>
+      </div>
+    </div>
+  </div>
+  <div class="mini-brand"><img src="assets/axons_logo.png" alt=""></div>
+  <div class="slide-num">08</div>
+</section>
+
+<!-- ===== SLIDE 10 — PO LENS (Backlog + User Story) ===== -->
+<section class="slide" id="s-po" data-nav="PO Lens">
+  <div class="bg-mesh"><div class="blob b" style="width:440px;height:440px;top:-160px;right:-120px;"></div></div>
+  <div class="slide-inner">
+    <div class="m-head">
+      <div class="left">
+        <div class="titrow"><span class="accent-bar"></span><h2>Product Owner Lens <span class="en">·</span> แปลงเป็นงานจริง</h2></div>
+        <p class="desc">จัดลำดับ Product Backlog และเขียน User Story พร้อม Acceptance Criteria สำหรับส่งต่อให้ทีมพัฒนา</p>
+      </div>
+      <span class="step-chip blue">Ideate · PO</span>
+    </div>
+    <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:18px;">
+      <!-- backlog -->
+      <div class="card glass">
+        <div class="ch"><span class="dot" style="background:var(--green)"></span><span class="lbl">Product Backlog · เรียงตาม priority</span></div>
+        <p style="font-size:12px;color:var(--ink-soft);margin-bottom:10px;">กดแต่ละรายการเพื่อดู User Story →</p>
+        <div style="display:flex;flex-direction:column;gap:7px;">
+          <div class="bl-row active" onclick="showStory(0,this)"><span class="bl-no">1</span><span>AI Decision Assistant</span><span class="bl-tag must">Must</span></div>
+          <div class="bl-row" onclick="showStory(1,this)"><span class="bl-no">2</span><span>ระบบจัดการแปลง (Plots)</span><span class="bl-tag must">Must</span></div>
+          <div class="bl-row" onclick="showStory(2,this)"><span class="bl-no">3</span><span>Weather Dashboard</span><span class="bl-tag must">Must</span></div>
+          <div class="bl-row" onclick="showStory(3,this)"><span class="bl-no">4</span><span>ระบบแจ้งเตือน</span><span class="bl-tag must">Must</span></div>
+          <div class="bl-row" onclick="showStory(4,this)"><span class="bl-no">5</span><span>ปฏิทินเพาะปลูก</span><span class="bl-tag should">Should</span></div>
+          <div class="bl-row" onclick="showStory(5,this)"><span class="bl-no">6</span><span>คลังความรู้ + ตลาด</span><span class="bl-tag could">Could</span></div>
+        </div>
+      </div>
+      <!-- user story -->
+      <div class="card glass">
+        <div class="ch"><span class="dot" style="background:var(--blue)"></span><span class="lbl">User Story + Acceptance Criteria</span></div>
+        <div id="storyBox"></div>
+      </div>
+    </div>
+  </div>
+  <div class="mini-brand"><img src="assets/axons_logo.png" alt=""></div>
+  <div class="slide-num">09</div>
+</section>
+
 <!-- ===== SLIDE 8 — BUSINESS & STRATEGY ===== -->
 <section class="slide tall" id="s-business" data-nav="Business">
   <div class="bg-mesh"><div class="blob b" style="width:440px;height:440px;top:-160px;right:-120px;"></div></div>
@@ -504,81 +571,60 @@
     </div>
   </div>
   <div class="mini-brand"><img src="assets/axons_logo.png" alt=""></div>
-  <div class="slide-num">08</div>
+  <div class="slide-num">10</div>
 </section>
 
-<!-- ===== SLIDE 9 — IDEATE (Feature + MoSCoW) ===== -->
-<section class="slide" id="s-ideate" data-nav="Ideate">
-  <div class="bg-mesh"><div class="blob g" style="width:440px;height:440px;bottom:-180px;left:-120px;"></div></div>
+<!-- ===== SLIDE 12 — INFORMATION ARCHITECTURE ===== -->
+<section class="slide tall" id="s-ia" data-nav="Information Architecture">
+  <div class="bg-mesh"><div class="blob b" style="width:440px;height:440px;bottom:-180px;left:-120px;"></div></div>
   <div class="slide-inner">
     <div class="m-head">
       <div class="left">
-        <div class="titrow"><span class="accent-bar"></span><h2>Ideate <span class="en">·</span> หาทางออก &amp; จัดลำดับ</h2></div>
-        <p class="desc">แปลงปัญหาเป็นฟีเจอร์ แล้วจัดลำดับความสำคัญด้วย MoSCoW เพื่อโฟกัสสิ่งที่เป็นแกนหลักก่อน</p>
+        <div class="titrow"><span class="accent-bar"></span><h2>Information Architecture <span class="en">·</span> โครงสร้างข้อมูล</h2></div>
+        <p class="desc">โครงสร้างการจัดวางเนื้อหาทั้งแอป จากเมนูหลักลงไปแต่ละชั้น เพื่อให้ผู้ใช้สูงวัยหาสิ่งที่ต้องการได้ง่าย</p>
       </div>
-      <span class="step-chip">Ideate · PO</span>
+      <span class="step-chip blue">Prototype</span>
     </div>
-    <div class="moscow-board">
-      <div class="moscow must">
-        <div class="ms-top"><div class="ms-badge">M</div><div class="ms-h">Must have<span>ต้องมี จำเป็นที่สุด</span></div></div>
-        <ul><li>AI Decision Assistant</li><li>ระบบจัดการแปลง (Plots)</li><li>Weather Dashboard</li><li>การ์ดแจ้งเตือน</li></ul>
-        <div class="ms-note">แกนหลักของคุณค่า ถ้าขาดไปแอปจะไม่ต่างจากแอปอากาศทั่วไป</div>
-      </div>
-      <div class="moscow should">
-        <div class="ms-top"><div class="ms-badge">S</div><div class="ms-h">Should have<span>ควรมี สำคัญรองลงมา</span></div></div>
-        <ul><li>ปฏิทินเพาะปลูกผูกระยะโต</li><li>บันทึกประวัติการดูแลรายแปลง</li></ul>
-        <div class="ms-note">เพิ่มคุณค่าได้มาก แต่ไม่ใช่เงื่อนไขที่ทำให้แอปใช้งานได้</div>
-      </div>
-      <div class="moscow could">
-        <div class="ms-top"><div class="ms-badge">C</div><div class="ms-h">Could have<span>มีก็ดี ถ้าเวลาเหลือ</span></div></div>
-        <ul><li>คลังความรู้ย่อย</li><li>ช่องเชื่อมตลาด</li></ul>
-        <div class="ms-note">ทำให้ประสบการณ์สมบูรณ์ขึ้น แต่ตัดออกได้หากทรัพยากรจำกัด</div>
-      </div>
-      <div class="moscow wont">
-        <div class="ms-top"><div class="ms-badge">W</div><div class="ms-h">Won't have<span>ยังไม่ทำในรอบนี้</span></div></div>
-        <ul><li>คำแนะนำรายแปลงเชิงลึก (ปุ๋ย/น้ำตามระยะ)</li><li>ระบบซื้อขายผลผลิตในแอป</li></ul>
-        <div class="ms-note">จงใจเลื่อนออกไปก่อน เพื่อให้โฟกัสกับแกนหลักได้เต็มที่</div>
-      </div>
-    </div>
-  </div>
-  <div class="mini-brand"><img src="assets/axons_logo.png" alt=""></div>
-  <div class="slide-num">09</div>
-</section>
-
-<!-- ===== SLIDE 10 — PO LENS (Backlog + User Story) ===== -->
-<section class="slide" id="s-po" data-nav="PO Lens">
-  <div class="bg-mesh"><div class="blob b" style="width:440px;height:440px;top:-160px;right:-120px;"></div></div>
-  <div class="slide-inner">
-    <div class="m-head">
-      <div class="left">
-        <div class="titrow"><span class="accent-bar"></span><h2>Product Owner Lens <span class="en">·</span> แปลงเป็นงานจริง</h2></div>
-        <p class="desc">จัดลำดับ Product Backlog และเขียน User Story พร้อม Acceptance Criteria สำหรับส่งต่อให้ทีมพัฒนา</p>
-      </div>
-      <span class="step-chip blue">Ideate · PO</span>
-    </div>
-    <div style="display:grid;grid-template-columns:0.85fr 1.15fr;gap:18px;">
-      <!-- backlog -->
-      <div class="card glass">
-        <div class="ch"><span class="dot" style="background:var(--green)"></span><span class="lbl">Product Backlog · เรียงตาม priority</span></div>
-        <p style="font-size:12px;color:var(--ink-soft);margin-bottom:10px;">กดแต่ละรายการเพื่อดู User Story →</p>
-        <div style="display:flex;flex-direction:column;gap:7px;">
-          <div class="bl-row active" onclick="showStory(0,this)"><span class="bl-no">1</span><span>AI Decision Assistant</span><span class="bl-tag must">Must</span></div>
-          <div class="bl-row" onclick="showStory(1,this)"><span class="bl-no">2</span><span>ระบบจัดการแปลง (Plots)</span><span class="bl-tag must">Must</span></div>
-          <div class="bl-row" onclick="showStory(2,this)"><span class="bl-no">3</span><span>Weather Dashboard</span><span class="bl-tag must">Must</span></div>
-          <div class="bl-row" onclick="showStory(3,this)"><span class="bl-no">4</span><span>ระบบแจ้งเตือน</span><span class="bl-tag must">Must</span></div>
-          <div class="bl-row" onclick="showStory(4,this)"><span class="bl-no">5</span><span>ปฏิทินเพาะปลูก</span><span class="bl-tag should">Should</span></div>
-          <div class="bl-row" onclick="showStory(5,this)"><span class="bl-no">6</span><span>คลังความรู้ + ตลาด</span><span class="bl-tag could">Could</span></div>
+    <div class="card glass">
+      <div class="ch"><span class="dot" style="background:var(--blue)"></span><span class="lbl">Site Map · โครงสร้าง 4 เมนูหลัก</span></div>
+      <div class="ia-tree">
+        <div class="ia-root">📱 AXONS Farming App</div>
+        <div class="ia-cols">
+          <div class="ia-col">
+            <div class="ia-l1 green">🏠 หน้าหลัก</div>
+            <div class="ia-l2">การ์ดคำแนะนำ AI</div>
+            <div class="ia-l3">ดูเหตุผลเบื้องหลัง</div>
+            <div class="ia-l2">แปลงของฉัน (carousel)</div>
+            <div class="ia-l3">รายละเอียดแปลง</div>
+            <div class="ia-l3">แปลงทั้งหมด</div>
+            <div class="ia-l3">เพิ่มแปลง</div>
+            <div class="ia-l2">อากาศวันนี้ + 7 วัน</div>
+          </div>
+          <div class="ia-col">
+            <div class="ia-l1 blue">📅 ปฏิทินเพาะปลูก</div>
+            <div class="ia-l2">เลือกแปลง (dropdown)</div>
+            <div class="ia-l2">บันทึกวันหว่าน</div>
+            <div class="ia-l2">ระยะการเติบโตปัจจุบัน</div>
+            <div class="ia-l2">สิ่งที่ต้องระวังในระยะนี้</div>
+          </div>
+          <div class="ia-col">
+            <div class="ia-l1 indigo">📚 คลังความรู้</div>
+            <div class="ia-l2">คลิปสั้นตามจังหวะ</div>
+            <div class="ia-l2">การ์ดความรู้ดูแลพืช</div>
+          </div>
+          <div class="ia-col">
+            <div class="ia-l1 amber">🛒 ตลาด</div>
+            <div class="ia-l2">ราคารับซื้อวันนี้</div>
+            <div class="ia-l2">จุดรับซื้อใกล้ตัว</div>
+            <div class="ia-l2">ข้อมูลนโยบายไม่เผา</div>
+          </div>
         </div>
       </div>
-      <!-- user story -->
-      <div class="card glass">
-        <div class="ch"><span class="dot" style="background:var(--blue)"></span><span class="lbl">User Story + Acceptance Criteria</span></div>
-        <div id="storyBox"></div>
-      </div>
+      <div style="margin-top:14px;font-size:12.5px;color:var(--ink-soft);font-style:italic;border-top:1px solid var(--border);padding-top:12px;">เลือกเมนูล่างเพียง 4 ปุ่ม เพื่อลดความซับซ้อนสำหรับผู้ใช้สูงวัย โดยวาง "แปลงของฉัน" ไว้ใต้หน้าหลักเพราะเป็นบริบทของคำแนะนำที่ผู้ใช้เห็นทุกวัน ไม่แยกเป็นเมนูเอกเทศ</div>
     </div>
   </div>
   <div class="mini-brand"><img src="assets/axons_logo.png" alt=""></div>
-  <div class="slide-num">10</div>
+  <div class="slide-num">11</div>
 </section>
 
 <!-- ===== SLIDE 11 — PROTOTYPE (Flow + IA + Mockup) ===== -->
@@ -826,59 +872,6 @@
     </div>
   </div>
   <div class="mini-brand"><img src="assets/axons_logo.png" alt=""></div>
-  <div class="slide-num">11</div>
-</section>
-
-<!-- ===== SLIDE 12 — INFORMATION ARCHITECTURE ===== -->
-<section class="slide tall" id="s-ia" data-nav="Information Architecture">
-  <div class="bg-mesh"><div class="blob b" style="width:440px;height:440px;bottom:-180px;left:-120px;"></div></div>
-  <div class="slide-inner">
-    <div class="m-head">
-      <div class="left">
-        <div class="titrow"><span class="accent-bar"></span><h2>Information Architecture <span class="en">·</span> โครงสร้างข้อมูล</h2></div>
-        <p class="desc">โครงสร้างการจัดวางเนื้อหาทั้งแอป จากเมนูหลักลงไปแต่ละชั้น เพื่อให้ผู้ใช้สูงวัยหาสิ่งที่ต้องการได้ง่าย</p>
-      </div>
-      <span class="step-chip blue">Prototype</span>
-    </div>
-    <div class="card glass">
-      <div class="ch"><span class="dot" style="background:var(--blue)"></span><span class="lbl">Site Map · โครงสร้าง 4 เมนูหลัก</span></div>
-      <div class="ia-tree">
-        <div class="ia-root">📱 AXONS Farming App</div>
-        <div class="ia-cols">
-          <div class="ia-col">
-            <div class="ia-l1 green">🏠 หน้าหลัก</div>
-            <div class="ia-l2">การ์ดคำแนะนำ AI</div>
-            <div class="ia-l3">ดูเหตุผลเบื้องหลัง</div>
-            <div class="ia-l2">แปลงของฉัน (carousel)</div>
-            <div class="ia-l3">รายละเอียดแปลง</div>
-            <div class="ia-l3">แปลงทั้งหมด</div>
-            <div class="ia-l3">เพิ่มแปลง</div>
-            <div class="ia-l2">อากาศวันนี้ + 7 วัน</div>
-          </div>
-          <div class="ia-col">
-            <div class="ia-l1 blue">📅 ปฏิทินเพาะปลูก</div>
-            <div class="ia-l2">เลือกแปลง (dropdown)</div>
-            <div class="ia-l2">บันทึกวันหว่าน</div>
-            <div class="ia-l2">ระยะการเติบโตปัจจุบัน</div>
-            <div class="ia-l2">สิ่งที่ต้องระวังในระยะนี้</div>
-          </div>
-          <div class="ia-col">
-            <div class="ia-l1 indigo">📚 คลังความรู้</div>
-            <div class="ia-l2">คลิปสั้นตามจังหวะ</div>
-            <div class="ia-l2">การ์ดความรู้ดูแลพืช</div>
-          </div>
-          <div class="ia-col">
-            <div class="ia-l1 amber">🛒 ตลาด</div>
-            <div class="ia-l2">ราคารับซื้อวันนี้</div>
-            <div class="ia-l2">จุดรับซื้อใกล้ตัว</div>
-            <div class="ia-l2">ข้อมูลนโยบายไม่เผา</div>
-          </div>
-        </div>
-      </div>
-      <div style="margin-top:14px;font-size:12.5px;color:var(--ink-soft);font-style:italic;border-top:1px solid var(--border);padding-top:12px;">เลือกเมนูล่างเพียง 4 ปุ่ม เพื่อลดความซับซ้อนสำหรับผู้ใช้สูงวัย โดยวาง "แปลงของฉัน" ไว้ใต้หน้าหลักเพราะเป็นบริบทของคำแนะนำที่ผู้ใช้เห็นทุกวัน ไม่แยกเป็นเมนูเอกเทศ</div>
-    </div>
-  </div>
-  <div class="mini-brand"><img src="assets/axons_logo.png" alt=""></div>
   <div class="slide-num">12</div>
 </section>
 
@@ -1115,8 +1108,8 @@
       <div class="principle-grid">
         <div class="principle">
           <div class="pr-icon">🔗</div>
-          <div class="pr-h">ทุกการตัดสินใจตามรอยกลับได้</div>
-          <p>ทุกฟีเจอร์ในงานนี้สามารถสืบย้อนกลับไปยังข้อมูลวิจัยได้ ตั้งแต่ research synthesis ไปสู่ cluster ของปัญหา แปลงเป็นฟีเจอร์ จัดลำดับด้วย MoSCoW และลงเป็น backlog ทุกอย่างเชื่อมกันเป็นเส้นเดียวโดยไม่มีการเดา</p>
+          <div class="pr-h">ทุกการตัดสินใจมีข้อมูลเชื่อมโยง</div>
+          <p>ทุกฟีเจอร์ในงานนี้สามารถสืบย้อนกลับไปยังข้อมูลวิจัยได้ ตั้งแต่ research synthesis ไปสู่ cluster ของปัญหา แปลงเป็นฟีเจอร์ จัดลำดับด้วย MoSCoW และลงเป็น backlog ทุกอย่างเชื่อมกันเป็นเส้นเดียว</p>
         </div>
         <div class="principle">
           <div class="pr-icon">🎨</div>
@@ -1130,8 +1123,8 @@
         </div>
         <div class="principle">
           <div class="pr-icon">📊</div>
-          <div class="pr-h">ยึดข้อมูลและความซื่อตรงเป็นหลัก</div>
-          <p>งานนำเสนอทั้งหมดนี้อยู่บนพื้นฐานของ Desk Research และ Secondary Research จากแหล่งข้อมูลที่น่าเชื่อถือ Persona ที่ใช้เป็น proto-persona ที่ตั้งบนสมมติฐาน และตัวชี้วัดทั้งหมดเป็นเป้าหมายที่ออกแบบไว้จะวัด ไม่ใช่ผลที่เกิดขึ้นจริง เพื่อความโปร่งใสและไม่กล่าวอ้างเกินจริง</p>
+          <div class="pr-h">ยึดข้อมูลเป็นหลัก</div>
+          <p>งานนำเสนอทั้งหมดนี้อยู่บนพื้นฐานของ Desk Research และ Secondary Research จากแหล่งข้อมูลที่น่าเชื่อถือ Persona ที่ใช้เป็น proto-persona ที่ตั้งบนสมมติฐาน และตัวชี้วัดทั้งหมดเป็นเป้าหมายที่ออกแบบไว้จะวัด ไม่ใช่ผลที่เกิดขึ้นจริง</p>
         </div>
       </div>
     </div>
@@ -1178,17 +1171,12 @@
 </div>
 
 <style>
-/* gantt chart */
-.gantt{margin-top:6px;}
-.gantt-head{display:grid;grid-template-columns:180px 1fr;align-items:center;margin-bottom:8px;}
-.gantt-head .gantt-grid{display:grid;grid-template-columns:repeat(7,1fr);}
-.gantt-head .gantt-grid span{font-size:11px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;text-align:center;padding-bottom:4px;border-bottom:1px solid var(--border);}
-.gantt-row{display:grid;grid-template-columns:180px 1fr;align-items:center;gap:0;height:34px;}
-.gantt-row .gantt-label{font-size:12.5px;color:var(--charcoal);font-weight:500;padding-right:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.gantt-row .gantt-grid{display:grid;grid-template-columns:repeat(7,1fr);position:relative;height:100%;align-items:center;}
-/* เส้น grid แนวตั้งจางๆ */
-.gantt-row .gantt-grid::before{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(to right,transparent,transparent calc(100%/7 - 1px),var(--border) calc(100%/7 - 1px),var(--border) calc(100%/7));opacity:0.5;}
-.gantt-bar{grid-column:var(--s) / span var(--d);height:22px;background:var(--c);border-radius:6px;opacity:0.92;position:relative;z-index:1;box-shadow:0 2px 6px rgba(0,0,0,0.08);}
+/* timeline rows */
+.tl-row{display:grid;grid-template-columns:56px 1fr;align-items:center;gap:12px;}
+.tl-day{font-size:12px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+.tl-track{position:relative;height:30px;display:flex;align-items:center;}
+.tl-bar{height:30px;width:var(--w);min-width:160px;background:var(--c);border-radius:8px;opacity:0.92;display:flex;align-items:center;padding-left:14px;}
+.tl-task{font-size:13px;color:#fff;font-weight:500;white-space:nowrap;}
 /* design thinking cards */
 .dt{display:flex;flex-direction:column;gap:6px;padding:18px 16px;}
 .dt-ic{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:6px;}
